@@ -1390,6 +1390,7 @@
   "enigmaticlegacyplus.configuration.extraBookList": "额外容许书本列表",
   "enigmaticlegacyplus.configuration.devourBlacklist": "全局吞噬黑名单",
   "enigmaticlegacyplus.configuration.spellstoneCooldown": "冷却缩减",
+  "enigmaticlegacyplus.configuration.checkExtraContent": "检查额外内容物",
   "enigmaticlegacyplus.configuration.amuletRed": "攻击伤害",
   "enigmaticlegacyplus.configuration.amuletAqua": "冲刺速度",
   "enigmaticlegacyplus.configuration.amuletViolet": "弹射物偏移",

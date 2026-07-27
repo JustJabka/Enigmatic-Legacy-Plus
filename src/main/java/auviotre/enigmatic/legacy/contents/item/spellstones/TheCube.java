@@ -263,7 +263,11 @@ public class TheCube extends SpellstoneItem {
 
         while (true) {
             BlockPos pos = new BlockPos(radius - random.nextInt(radius * 2), key == Level.NETHER ? 100 : 200, radius - random.nextInt(radius * 2));
-            level.getChunkAt(pos);
+            try {
+                level.getChunkAt(pos);
+            } catch (Exception exception) {
+                return Optional.empty();
+            }
 
             for (int i = 0; i < 4; i++) {
                 if (i > 0)

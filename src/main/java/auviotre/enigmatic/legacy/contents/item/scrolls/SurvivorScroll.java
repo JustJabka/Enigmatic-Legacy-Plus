@@ -45,7 +45,7 @@ public class SurvivorScroll extends BaseCurioItem {
 
     @SubscribeConfig
     public static void onConfig(ModConfigSpec.Builder builder, ModConfig.Type type) {
-        builder.translation("item.enigmaticlegacyplus.survival_scroll").push("else.survivalScroll");
+        builder.translation("item.enigmaticlegacyplus.survivor_scroll").push("else.survivorScroll");
         threshold = builder.defineInRange("healthThreshold", 40, 0, 100);
         builder.pop(2);
     }

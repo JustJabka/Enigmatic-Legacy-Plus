@@ -1,5 +1,6 @@
 package auviotre.enigmatic.legacy.contents.item.tools;
 
+import auviotre.enigmatic.legacy.api.SubscribeConfig;
 import auviotre.enigmatic.legacy.api.item.IItemHelper;
 import auviotre.enigmatic.legacy.handlers.TooltipHandler;
 import auviotre.enigmatic.legacy.registries.EnigmaticComponents;
@@ -36,13 +37,16 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.EffectCures;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.fluids.FluidStack;
 
 import java.util.List;
 
 public class StarlightBucket extends Item {
+    public static ModConfigSpec.BooleanValue checkExtraContent;
 
     public StarlightBucket() {
         super(IItemHelper.singleProperties());
@@ -50,6 +54,13 @@ public class StarlightBucket extends Item {
 
     private Item getContent(ItemStack stack) {
         return BuiltInRegistries.ITEM.get(ResourceLocation.parse(stack.getOrDefault(EnigmaticComponents.CONTENT, "minecraft:air")));
+    }
+
+    @SubscribeConfig
+    public static void onConfig(ModConfigSpec.Builder builder, ModConfig.Type type) {
+        builder.translation("item.enigmaticlegacyplus.starlight_bucket").push("else.starlightBucket");
+        checkExtraContent = builder.define("checkExtraContent", false);
+        builder.pop(2);
     }
 
     @OnlyIn(Dist.CLIENT)
@@ -93,7 +104,7 @@ public class StarlightBucket extends Item {
                 } else {
                     BlockPos place = blockState.getBlock() instanceof LiquidBlockContainer container && container.canPlaceLiquid(player, level, blockPos, blockState, bucket.content) ? blockPos : relative;
                     if (bucket.emptyContents(player, level, place, result, stack)) {
-                        bucket.checkExtraContent(player, level, stack, place);
+                        if (checkExtraContent.get()) bucket.checkExtraContent(player, level, stack, place);
                         if (player instanceof ServerPlayer serverPlayer)
                             CriteriaTriggers.PLACED_BLOCK.trigger(serverPlayer, place, stack);
                         player.awardStat(Stats.ITEM_USED.get(this));

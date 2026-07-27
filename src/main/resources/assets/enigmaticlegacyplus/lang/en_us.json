@@ -1390,6 +1390,7 @@
   "enigmaticlegacyplus.configuration.extraBookList": "Extra Allowed Book List",
   "enigmaticlegacyplus.configuration.devourBlacklist": "Global Devouring Blacklist",
   "enigmaticlegacyplus.configuration.spellstoneCooldown": "Cooldown Reduction",
+  "enigmaticlegacyplus.configuration.checkExtraContent": "Check Extra Content",
   "enigmaticlegacyplus.configuration.amuletRed": "Attack Damage",
   "enigmaticlegacyplus.configuration.amuletAqua": "Sprinting Speed",
   "enigmaticlegacyplus.configuration.amuletViolet": "Deflect Chance",
