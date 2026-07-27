@@ -8,10 +8,7 @@ import auviotre.enigmatic.legacy.contents.item.generic.SpellstoneItem;
 import auviotre.enigmatic.legacy.contents.item.spellstones.other.Spelltuner;
 import auviotre.enigmatic.legacy.handlers.EnigmaticHandler;
 import auviotre.enigmatic.legacy.handlers.TooltipHandler;
-import auviotre.enigmatic.legacy.registries.EnigmaticAttributes;
-import auviotre.enigmatic.legacy.registries.EnigmaticComponents;
-import auviotre.enigmatic.legacy.registries.EnigmaticItems;
-import auviotre.enigmatic.legacy.registries.EnigmaticTags;
+import auviotre.enigmatic.legacy.registries.*;
 import com.google.common.collect.ImmutableMultimap;
 import com.google.common.collect.Multimap;
 import net.minecraft.ChatFormatting;
@@ -20,6 +17,10 @@ import net.minecraft.core.Holder;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.util.Mth;
+import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.Attribute;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
@@ -74,7 +75,7 @@ public class EtheriumCore extends SpellstoneItem {
             if (boost) TooltipHandler.line(list, "tooltip.enigmaticlegacy.etheriumCoreSkill");
             else TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkillAbsent");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.etheriumCore1", ChatFormatting.GOLD, boost ? "+12" : "+10", boost ? "+10" : "+8");
@@ -106,8 +107,17 @@ public class EtheriumCore extends SpellstoneItem {
         return tooltips;
     }
 
-    public int getCooldown() {
-        return 0;
+    public void triggerActiveAbility(ServerLevel level, @NotNull ServerPlayer player, ItemStack stack) {
+        boolean boost = stack.getOrDefault(EnigmaticComponents.BOOLEAN, false);
+        if (boost) {
+            double value = player.getAttributeValue(EnigmaticAttributes.ETHERIUM_SHIELD);
+            player.addEffect(new MobEffectInstance(EnigmaticEffects.STARLIGHT_BLESSING, 2000 + Mth.floor(2000 * value)));
+        }
+        super.triggerActiveAbility(level, player, stack);
+    }
+
+    public int getCooldown(ItemStack stack) {
+        return stack.getOrDefault(EnigmaticComponents.BOOLEAN, false) ? 4000 : 0;
     }
 
     public void addTuneTooltip(List<Component> list) {

@@ -178,7 +178,6 @@
   "enchantment.enigmaticlegacyplus.wrath": "愤怒",
   "enchantment.enigmaticlegacyplus.wrath.desc": "增加对任意生物的伤害",
 
-
   "effect.enigmaticlegacyplus.abyss_corruption": "深渊腐蚀",
   "effect.enigmaticlegacyplus.abyss_corruption.desc": "强力的负面效果，会随着死亡蔓延。",
   "effect.enigmaticlegacyplus.blazing_might": "烈焰巨力",
@@ -191,6 +190,8 @@
   "effect.enigmaticlegacyplus.molten_heart.desc": "使你免疫火焰灼烧，并在岩浆中拥有清晰的视野。",
   "effect.enigmaticlegacyplus.pure_resistance": "纯化抗性",
   "effect.enigmaticlegacyplus.pure_resistance.desc": "减少所受伤害的同时有概率抵挡伤害。",
+  "effect.enigmaticlegacyplus.starlight_blessing": "星光庇佑",
+  "effect.enigmaticlegacyplus.starlight_blessing.desc": "以太阈值将会提供增伤，在结束时回复生命值。",
   "effect.enigmaticlegacyplus.violence_curse": "狂热之咒",
   "effect.enigmaticlegacyplus.violence_curse.desc": "战斗中产生的临时诅咒。",
 
@@ -842,7 +843,7 @@
   "tooltip.enigmaticlegacy.theCube12": "§5  于§61点§5时，将会尝试启动主动技能以躲避致命伤害。",
   "tooltip.enigmaticlegacy.theCube13": "§5  如果成功将会恢复§630%§5的生命值并获得强力增益。",
 
-  "tooltip.enigmaticlegacy.etheriumCoreSkill": "§4- 未完成",
+  "tooltip.enigmaticlegacy.etheriumCoreSkill": "§6- 根据以太阈值提供星光庇佑效果",
   "tooltip.enigmaticlegacy.etheriumCore1": "§5- §6%1$s§5 护甲值, §6%2$s§5 盔甲韧性",
   "tooltip.enigmaticlegacy.etheriumCore2": "§5- §6%1$s§5 击退抗性",
   "tooltip.enigmaticlegacy.etheriumCore3": "§5- §6+%1$s§5 以太护盾阈值",

@@ -95,7 +95,7 @@ public class EyeOfNebula extends SpellstoneItem {
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkill");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.eyeOfNebulaSkill");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.eyeOfNebula1", ChatFormatting.GOLD, magicBoost.get() + "%");
@@ -114,7 +114,7 @@ public class EyeOfNebula extends SpellstoneItem {
         TooltipHandler.line(list, "tooltip.enigmaticlegacy.eyeOfNebula2", ChatFormatting.GOLD, (magicResistance.get() + 5) / 2 + "%");
     }
 
-    public int getCooldown() {
+    public int getCooldown(ItemStack stack) {
         return cooldown.get();
     }
 

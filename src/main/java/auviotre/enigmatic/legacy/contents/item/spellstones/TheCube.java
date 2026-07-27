@@ -102,7 +102,7 @@ public class TheCube extends SpellstoneItem {
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkill");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.theCubeSkill");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.2f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.2f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.theCube1");
@@ -185,7 +185,7 @@ public class TheCube extends SpellstoneItem {
         super.onUnequip(context, newStack, stack);
     }
 
-    public int getCooldown() {
+    public int getCooldown(ItemStack stack) {
         return 2400;
     }
 

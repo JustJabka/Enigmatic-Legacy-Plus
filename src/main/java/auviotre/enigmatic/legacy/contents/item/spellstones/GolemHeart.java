@@ -73,7 +73,7 @@ public class GolemHeart extends SpellstoneItem {
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkill");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkillAbsent");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.golemHeart1", ChatFormatting.GOLD, String.format("%.1f", defaultArmorBonus.getAsDouble()));
@@ -95,7 +95,7 @@ public class GolemHeart extends SpellstoneItem {
         TooltipHandler.line(list, "tooltip.enigmaticlegacy.golemHeart6", ChatFormatting.GOLD, String.format("%.0f%%", resistance));
     }
 
-    public int getCooldown() {
+    public int getCooldown(ItemStack stack) {
         return 0;
     }
 

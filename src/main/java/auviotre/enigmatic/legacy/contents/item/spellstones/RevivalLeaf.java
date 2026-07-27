@@ -87,7 +87,7 @@ public class RevivalLeaf extends SpellstoneItem {
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkill");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.revivalLeafSkill");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.revivalLeaf1");
@@ -164,7 +164,7 @@ public class RevivalLeaf extends SpellstoneItem {
         super.onUnequip(context, newStack, stack);
     }
 
-    public int getCooldown() {
+    public int getCooldown(ItemStack stack) {
         return cooldown.get();
     }
 

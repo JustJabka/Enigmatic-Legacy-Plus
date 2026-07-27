@@ -76,7 +76,7 @@ public class LostEngine extends SpellstoneItem {
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkill");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneSkillAbsent");
             TooltipHandler.line(list);
-            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown()));
+            TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstoneCooldown", ChatFormatting.GOLD, String.format("%.01f", 0.05F * getCooldown(stack)));
             TooltipHandler.line(list);
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.spellstonePassive");
             TooltipHandler.line(list, "tooltip.enigmaticlegacy.lostEngine1");
@@ -95,7 +95,7 @@ public class LostEngine extends SpellstoneItem {
         TooltipHandler.line(list, "tooltip.enigmaticlegacy.lostEngine4", ChatFormatting.GOLD, "30%");
     }
 
-    public int getCooldown() {
+    public int getCooldown(ItemStack stack) {
         return 0;
     }
 

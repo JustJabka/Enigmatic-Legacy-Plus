@@ -30,8 +30,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.event.lifecycle.FMLLoadCompleteEvent;
-import net.neoforged.fml.event.lifecycle.InterModEnqueueEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
@@ -76,10 +74,8 @@ public class EnigmaticLegacy {
 
         NeoForge.EVENT_BUS.register(this);
         eventBus.addListener(this::onCommonSetup);
-        eventBus.addListener(this::interMod);
         eventBus.addListener(this::onPacketSetup);
         eventBus.addListener(this::attributeSetup);
-        eventBus.addListener(this::onLoadComplete);
         eventBus.addListener(this::addCreative);
 
         container.registerConfig(ModConfig.Type.SERVER, ELConfig.SPEC);
@@ -103,13 +99,6 @@ public class EnigmaticLegacy {
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
         PROXY.init();
-    }
-
-    public void onLoadComplete(FMLLoadCompleteEvent event) {
-    }
-
-    private void interMod(InterModEnqueueEvent event) {
-
     }
 
     public void onPacketSetup(final RegisterPayloadHandlersEvent event) {

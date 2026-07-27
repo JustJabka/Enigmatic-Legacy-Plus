@@ -1,4 +1,4 @@
-### Release 1.1.0 [2026/]
+### Release 1.1.0 [2026/07/27]
 **Features:**
 - Added lots of new Items(**Resonator of Spell**, **Potion of Purification**, **Starlight Ingot**...).
 
@@ -10,6 +10,7 @@
 **Fixes:**
 - Fixed a bug where **The Cube** might cause the server to forcibly shut down.
 - Fixed the Night Vision effect of the **Charm of Treasure Hunter** not working properly.
+- Fixed an issue where **Etheric Resonance** was not taking effect in the curio slot.
 - Fixed some minor issues.
 
 ### Release 1.0.0 [2026/05/10]

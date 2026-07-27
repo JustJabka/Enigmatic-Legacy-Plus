@@ -190,6 +190,8 @@
   "effect.enigmaticlegacyplus.molten_heart.desc": "Makes you immune to fire and grants you clear vision in lava.",
   "effect.enigmaticlegacyplus.pure_resistance": "Pure Resistance",
   "effect.enigmaticlegacyplus.pure_resistance.desc": "Reduce the damage received while having a chance to block damage.",
+  "effect.enigmaticlegacyplus.starlight_blessing": "Blessing of Starlight",
+  "effect.enigmaticlegacyplus.starlight_blessing.desc": "Etherium Threshold will increase damage dealt and restoring health when the effect ends.",
   "effect.enigmaticlegacyplus.violence_curse": "Curse of Mania",
   "effect.enigmaticlegacyplus.violence_curse.desc": "Temporary curses generated in battle.",
 
@@ -841,7 +843,7 @@
   "tooltip.enigmaticlegacy.theCube12": "§5  trigger active ability to prevent lethal damage. Restores your",
   "tooltip.enigmaticlegacy.theCube13": "§5  health to §630%§5 and applies powerful buffs if successful.",
 
-  "tooltip.enigmaticlegacy.etheriumCoreSkill": "§4- WIP",
+  "tooltip.enigmaticlegacy.etheriumCoreSkill": "§6- Provides Blessing of Starlight effect based on Etherium Threshold.",
   "tooltip.enigmaticlegacy.etheriumCore1": "§5- §6%1$s§5 Armor, §6%2$s§5 Toughness",
   "tooltip.enigmaticlegacy.etheriumCore2": "§5- §6%1$s§5 Knockback Resistance",
   "tooltip.enigmaticlegacy.etheriumCore3": "§5- §6+%1$s§5 Etherium Shield Threshold",

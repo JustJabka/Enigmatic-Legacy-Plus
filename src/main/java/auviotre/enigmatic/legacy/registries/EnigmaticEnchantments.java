@@ -15,6 +15,7 @@ import net.minecraft.core.HolderSet;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.EnchantmentTags;
 import net.minecraft.tags.EntityTypeTags;
 import net.minecraft.tags.ItemTags;
@@ -26,6 +27,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeModifier;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.*;
 import net.minecraft.world.item.enchantment.effects.AddValue;
@@ -45,6 +47,8 @@ import net.neoforged.neoforge.event.entity.living.LivingDamageEvent;
 import net.neoforged.neoforge.event.entity.living.LivingDeathEvent;
 import net.neoforged.neoforge.event.entity.living.LivingIncomingDamageEvent;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotContext;
+import top.theillusivec4.curios.api.event.CurioAttributeModifierEvent;
 import top.theillusivec4.curios.api.event.CurioCanUnequipEvent;
 import top.theillusivec4.curios.api.event.DropRulesEvent;
 import top.theillusivec4.curios.api.type.capability.ICurio;
@@ -261,6 +265,18 @@ public class EnigmaticEnchantments {
                 int amplifier = Math.min((int) (severity / 2), 3);
                 MobEffectInstance instance = new MobEffectInstance(EnigmaticHandler.getRandomDebuff(entity), (int) (300 * severity), amplifier, false, true);
                 entity.addEffect(instance);
+            }
+        }
+
+        @SubscribeEvent
+        private static void getCurioAttribute(@NotNull CurioAttributeModifierEvent event) {
+            SlotContext context = event.getSlotContext();
+            if (context.entity() == null) return;
+            ItemStack stack = event.getItemStack();
+            ResourceLocation location = EnigmaticLegacy.location("enchantment.etheric_resonance/" + context.identifier() + "_" + context.index());
+            var ethereal = EnigmaticHandler.get(context.entity().level(), Registries.ENCHANTMENT, ETHERIC_RESONANCE);
+            if (stack.getEnchantmentLevel(ethereal) > 0) {
+                event.addModifier(EnigmaticAttributes.ETHERIUM_SHIELD, new AttributeModifier(location, 0.01, AttributeModifier.Operation.ADD_VALUE));
             }
         }
     }

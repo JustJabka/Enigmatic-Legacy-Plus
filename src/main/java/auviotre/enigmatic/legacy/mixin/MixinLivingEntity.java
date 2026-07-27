@@ -8,6 +8,7 @@ import auviotre.enigmatic.legacy.contents.item.tools.TotemOfMalice;
 import auviotre.enigmatic.legacy.handlers.EnigmaticHandler;
 import auviotre.enigmatic.legacy.packets.client.TotemOfMalicePacket;
 import auviotre.enigmatic.legacy.registries.EnigmaticDamageTypes;
+import auviotre.enigmatic.legacy.registries.EnigmaticEffects;
 import auviotre.enigmatic.legacy.registries.EnigmaticItems;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.particles.ParticleTypes;
@@ -45,6 +46,9 @@ public abstract class MixinLivingEntity extends Entity implements ILivingEntityE
     @Shadow
     protected ItemStack useItem;
 
+    @Shadow
+    private boolean effectsDirty;
+
     public MixinLivingEntity(EntityType<?> type, Level level) {
         super(type, level);
     }
@@ -70,6 +74,12 @@ public abstract class MixinLivingEntity extends Entity implements ILivingEntityE
             this.level().addParticle(ParticleTypes.SNOWFLAKE, this.getRandomX(0.6D), this.getRandomY() + 0.1D, this.getRandomZ(0.6D), 0.0D, -0.05D, 0.0D);
         }
         if (!this.canFreeze() && this.getTicksFrozen() > 0) this.setTicksFrozen(0);
+    }
+
+    @Inject(method = "tickEffects", at = @At("RETURN"))
+    public void tickEffectsMix(CallbackInfo ci) {
+        if (this.self().getRandom().nextBoolean() && this.self().hasEffect(EnigmaticEffects.STARLIGHT_BLESSING))
+            this.effectsDirty = true;
     }
 
     @Inject(method = "canFreeze", at = @At("RETURN"), cancellable = true)
