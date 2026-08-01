@@ -19,12 +19,12 @@ public class IchorPermeation implements INBTSerializable<CompoundTag> {
 
     public CompoundTag save() {
         CompoundTag tag = new CompoundTag();
-        tag.putBoolean("MagnetRingEffect", this.infected);
+        tag.putBoolean("IchorPermeation", this.infected);
         return tag;
     }
 
     public void load(@NotNull CompoundTag tag) {
-        this.infected = tag.getBoolean("infected");
+        this.infected = tag.getBoolean("IchorPermeation");
     }
 
     public @UnknownNullability CompoundTag serializeNBT(HolderLookup.Provider provider) {
