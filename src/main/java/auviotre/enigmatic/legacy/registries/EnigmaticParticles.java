@@ -9,6 +9,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
+import net.minecraft.util.RandomSource;
 import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.jetbrains.annotations.NotNull;
@@ -37,5 +38,13 @@ public class EnigmaticParticles {
                 return streamCodecGetter.apply(this);
             }
         });
+    }
+
+    public static ParticleOptions randomStarDust(RandomSource random) {
+        return switch (random.nextInt(3)) {
+            case 0 -> BLUE_STAR_DUST.get();
+            case 1 -> RED_STAR_DUST.get();
+            default -> PURPLE_STAR_DUST.get();
+        };
     }
 }

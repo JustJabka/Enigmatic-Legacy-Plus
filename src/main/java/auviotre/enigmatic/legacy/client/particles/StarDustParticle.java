@@ -1,14 +1,11 @@
 package auviotre.enigmatic.legacy.client.particles;
 
-import auviotre.enigmatic.legacy.registries.EnigmaticParticles;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleProvider;
 import net.minecraft.client.particle.SimpleAnimatedParticle;
 import net.minecraft.client.particle.SpriteSet;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.SimpleParticleType;
-import net.minecraft.util.RandomSource;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
@@ -25,14 +22,6 @@ public class StarDustParticle extends SimpleAnimatedParticle {
         this.lifetime = 30 + this.random.nextInt(20);
         this.setFadeColor(color);
         this.setSpriteFromAge(spriteSet);
-    }
-
-    public static ParticleOptions get(RandomSource random) {
-        return switch (random.nextInt(3)) {
-            case 0 -> EnigmaticParticles.BLUE_STAR_DUST.get();
-            case 1 -> EnigmaticParticles.RED_STAR_DUST.get();
-            default -> EnigmaticParticles.PURPLE_STAR_DUST.get();
-        };
     }
 
     public void tick() {
